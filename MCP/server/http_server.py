@@ -492,11 +492,13 @@ async def mcp_post_endpoint(
         body = await request.body()
         data = json.loads(body.decode("utf-8"))
     except json.JSONDecodeError as e:
+        # Log detailed parse error server-side without exposing it to the client
+        print(f"JSON parse error: {e}")
         return JSONResponse(
             status_code=400,
             content={
                 "jsonrpc": "2.0",
-                "error": {"code": -32700, "message": f"Parse error: {e}"},
+                "error": {"code": -32700, "message": "Parse error"},
             },
         )
 
