@@ -17,7 +17,7 @@ def register():
     # For Ollama, we don't need a real API key
     api_key = "ollama-placeholder-key"
 
-    print(f"Registering with API key: {api_key}")
+    print("Registering with API key...")
     print()
 
     try:
